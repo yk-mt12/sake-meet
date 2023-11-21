@@ -17,7 +17,7 @@ const GridCard = (props: GridCardProps) => {
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.gridContainer}>
         {cardData.map((card, index) => (
-          <View style={styles.card}>
+          <View key={index} style={styles.card}>
             <WantDrinkCard
               key={index}
               source={card.source}

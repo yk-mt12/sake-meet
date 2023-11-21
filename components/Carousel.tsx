@@ -6,24 +6,12 @@ import cardData from "../data/mockData";
 
 const Carousel = () => {
   return (
-    <View style={styles.carousel}>
-      <AntDesign
-        name="leftcircle"
-        size={24}
-        color="#FB5660"
-        style={styles.arrowIcon}
-      />
+  <View style={styles.carousel}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {cardData.map((card, index) => (
           <Card key={index} source={card.source} title={card.title} />
         ))}
       </ScrollView>
-      <AntDesign
-        name="rightcircle"
-        size={24}
-        color="#FB5660"
-        style={styles.arrowIcon}
-      />
     </View>
   );
 };

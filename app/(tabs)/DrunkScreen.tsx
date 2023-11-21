@@ -52,9 +52,10 @@ export default function DrunkScreen() {
   return (
     <ScrollView showsHorizontalScrollIndicator={false}>
       <View style={styles.container}>
-        {cardData.map((card, index) => (
-          <HorizontalCard source={card.source} title={card.title} />
-        ))}
+        {cardData &&
+          cardData.map((card, index) => (
+            <HorizontalCard key={index} source={card.source} title={card.title} />
+          ))}
       </View>
     </ScrollView>
   );
