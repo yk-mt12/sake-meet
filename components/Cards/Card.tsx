@@ -19,7 +19,7 @@ export function Card(props: CardProps) {
 
 const styles = StyleSheet.create({
   container: {
-    shadowColor: "#333",
+    boxShadow: "#333",
     shadowRadius: 0,
     marginHorizontal: 8,
     borderRadius: 12,
