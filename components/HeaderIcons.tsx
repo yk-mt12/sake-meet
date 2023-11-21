@@ -1,14 +1,14 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
-import NotificationIcon from "../assets/images/notifications_none.svg";
-import AvaterIcon from "../assets/images/user-circle.svg";
+import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
 export function HeaderIcons() {
   return (
     <View style={styles.container}>
-      <Image source={NotificationIcon} />
-      <Image source={AvaterIcon} />
+      <Ionicons name="notifications-sharp" size={24} color="black" />
+      <FontAwesome name="user-circle-o" size={24} color="black" />
     </View>
   );
 }
@@ -18,5 +18,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-end",
+    marginHorizontal: 8,
   },
 });

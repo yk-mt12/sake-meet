@@ -11,10 +11,16 @@ export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <View lightColor="#EFEFEF" darkColor="#EFEFEF" />
-      <HeaderIcons />
+      <View style={styles.headerIconsContainer}>
+        <HeaderIcons />
+      </View>
       <CarouselTitle name="RE: hoge" location="北千住" />
-      <Carousel />
-      <CommentCard comment="hgoehogheoghoehgoeho"/>
+      <View style={styles.carouselContainer}>
+        <Carousel />
+      </View>
+      <View style={styles.commentContainer}>
+        <CommentCard comment="hgoehogheoghoehgoeho" />
+      </View>
     </View>
   );
 }
@@ -24,5 +30,15 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 20,
     backgroundColor: "#EFEFEF",
+    marginHorizontal: 8,
+  },
+  headerIconsContainer: {
+    marginTop: 32,
+  },
+  carouselContainer: {
+    marginTop: 32,
+  },
+  commentContainer: {
+    marginTop: 32,
   },
 });

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import LocationIcon from "../assets/images/location_on.svg";
+import { Ionicons } from "@expo/vector-icons";
 
 export interface CardProps {
   location: string;
@@ -13,7 +13,7 @@ export function CarouselTitle(props: CardProps) {
   return (
     <View style={styles.container}>
       <View style={styles.locationBox}>
-        <Image source={LocationIcon} />
+        <Ionicons name="location-sharp" size={20} color="black" />
         <Text>{location}</Text>
       </View>
       <Text style={styles.text}>{name}</Text>

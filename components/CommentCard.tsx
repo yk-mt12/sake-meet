@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { ScrollView, View, Text } from "react-native";
+import React from "react";
+import { StyleSheet, View, Text } from "react-native";
 import OriginalButton from "./Button";
 
 interface CommentCardProps {
@@ -11,7 +11,9 @@ export function CommentCard(props: CommentCardProps) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{comment}</Text>
-      <OriginalButton title="飲みたい" />
+      <View style={styles.buttonLayout}>
+        <OriginalButton title="飲みたい" />
+      </View>
     </View>
   );
 }
@@ -19,14 +21,21 @@ export function CommentCard(props: CommentCardProps) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
-    minHeight: 336,
-    width: "100%",
+    minHeight: 300,
     marginHorizontal: 8,
     paddingHorizontal: 24,
     paddingTop: 12,
-    paddingBottom: 16,
+    paddingBottom: 24, // Ensure there's enough space for the button
+    borderRadius: 8 
   },
   text: {
     fontSize: 18,
   },
+  buttonLayout: {
+    marginTop: "auto", 
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
+
+export default CommentCard;
