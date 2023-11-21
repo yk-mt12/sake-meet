@@ -7,6 +7,7 @@ import Carousel from "../../components/Carousel";
 import { CarouselTitle } from "../../components/CarouselTitle";
 import { HeaderIcons } from "../../components/HeaderIcons";
 import { CommentCard } from "../../components/CommentCard";
+import cardData from "../../data/mockData";
 
 const data = [
   {
@@ -78,6 +79,7 @@ export default function HomeScreen() {
   }, []);
 
   useEffect(() => {
+    if (lat === null || long === null) return;
     const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${process.env.EXPO_PUBLIC_GOOGLE_API_KEY}`;
     fetch(url)
       .then((response) => response.json())
@@ -100,12 +102,12 @@ export default function HomeScreen() {
       <View style={styles.headerIconsContainer}>
         <HeaderIcons />
       </View>
-      <CarouselTitle name="RE: hoge" location={address} />
+      <CarouselTitle name="RE: hoge" location={address ? address : ""} />
       <View style={styles.carouselContainer}>
         <Carousel />
-      </View>
-      <View style={styles.commentContainer}>
-        <CommentCard comment="hgoehogheoghoehgoeho" />
+        <View style={styles.commentContainer}>
+          <CommentCard  comment={"すっきりした味わいで美味しかったです！\n何度でもリピートしたい味！"} />
+        </View>
       </View>
     </View>
   );

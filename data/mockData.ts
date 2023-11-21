@@ -1,47 +1,66 @@
 import DrinkImage1 from "../assets/images/drink1.png";
+import DrinkImage2 from "../assets/images/drink2.jpg";
+import DrinkImage3 from "../assets/images/drink3.jpg";  
+import DrinkImage4 from "../assets/images/drink4.jpg";
+import DrinkImage5 from "../assets/images/drink5.jpg";
+import DrinkImage6 from "../assets/images/drink6.jpg";
+import DrinkImage7 from "../assets/images/drink7.jpg";
+import DrinkImage8 from "../assets/images/drink8.jpg";
+import DrinkImage9 from "../assets/images/drink9.jpg";
 import { CardType } from "../types/CardDataType";
 
 
-const cardData:CardType[] = [
+const cardData = [
   {
     source: DrinkImage1,
-    title: "タイトル",
+    title: "Lucky Dog",
+    comment: "すっきりした味わいで飲みやすかったです！"
   },
   {
-    source: DrinkImage1,
-    title: "タイトル",
+    source: DrinkImage2,
+    title: "Rouge",
+    comment: "すっきりした味わいで飲みやすかったです！"
   },
   {
-    source: DrinkImage1,
-    title: "タイトル",
+    source: DrinkImage3,
+    title: "Shinsyc",
+    comment: "すっきりした味わいで飲みやすかったです！"
   },
   {
-    source: DrinkImage1,
-    title: "タイトル",
+    source: DrinkImage4,
+    title: "こてさんね",
+    comment: "すっきりした味わいで飲みやすかったです！"
+
   },
   {
-    source: DrinkImage1,
-    title: "タイトル",
+    source: DrinkImage5,
+    title: "夢のあと",
+    comment: "すっきりした味わいで飲みやすかったです！"
+
   },
   {
-    source: DrinkImage1,
-    title: "タイトル",
+    source: DrinkImage6,
+    title: "鶴見",
+    comment: "すっきりした味わいで飲みやすかったです！"
+
   },
   {
-    source: DrinkImage1,
-    title: "タイトル",
+    source: DrinkImage7,
+    title: "天文館",
+    comment: "すっきりした味わいで飲みやすかったです！"
+
   },
   {
-    source: DrinkImage1,
-    title: "タイトル",
+    source: DrinkImage8,
+    title: "角ハイボール",
+    comment: "すっきりした味わいで飲みやすかったです！"
+
   },
   {
-    source: DrinkImage1,
-    title: "タイトル",
-  },
-  {
-    source: DrinkImage1,
-    title: "タイトル",
+    source: DrinkImage9,
+    title: "各ハイボール",
+    comment: "すっきりした味わいで飲みやすかったです！"
+
   },
 ];
 
