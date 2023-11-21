@@ -4,35 +4,20 @@ import { StyleSheet, View, Text, ScrollView } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import cardData from "../data/mockData";
 
-const Carousel = () => {
+const GridCard = () => {
   return (
-    <View style={styles.carousel}>
-      <AntDesign
-        name="leftcircle"
-        size={24}
-        color="#FB5660"
-        style={styles.arrowIcon}
-      />
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {cardData.map((card, index) => (
-          <Card key={index} source={card.imageSource} title={card.title} />
-        ))}
-      </ScrollView>
-      <AntDesign
-        name="rightcircle"
-        size={24}
-        color="#FB5660"
-        style={styles.arrowIcon}
-      />
+    <View style={styles.gridContainer}>
+      {cardData.map((card, index) => (
+        <Card key={index} source={card.imageSource} title={card.title} />
+      ))}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  carousel: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
+    gridContainer: {
+        
+    }
   card: {
     width: 200, // 適切な幅に設定
     marginHorizontal: 8, // 必要に応じて調整

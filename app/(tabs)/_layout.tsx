@@ -1,55 +1,69 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { AntDesign, FontAwesome } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+import HomeScreen from "./HomeScreen";
+import FavoritesScreen from "./FavoritesScreen";
+import DrunkScreen from "./DrunkScreen";
+import RecommendScreen from "./RecommendScreen";
+import { FontAwesome5 } from "@expo/vector-icons";
+const Tab = createBottomTabNavigator();
 
-import Colors from '../../constants/Colors';
-
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const BottomTabNavigator = () => {
   return (
-    <Tabs
+    <Tab.Navigator
+      initialRouteName="新しい出会い"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: "#FB5660",
+        tabBarStyle: {
+          borderTopColor: "#EFEFEF",
+          backgroundColor: "#EFEFEF",
+        },
       }}>
-      <Tabs.Screen
-        name="index"
+      <Tab.Screen
+        name="新しい出会い"
+        component={HomeScreen}
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
+          tabBarLabel: "新しい出会い",
+          tabBarIcon: ({ color, size }) => (
+            <Entypo name="drink" size={size} color={color} />
           ),
         }}
       />
-      <Tabs.Screen
-        name="two"
+      <Tab.Screen
+        name="飲みたい"
+        component={FavoritesScreen}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarLabel: "飲みたい",
+          tabBarIcon: ({ color, size }) => (
+            <Entypo name="heart-outlined" size={size} color={color} />
+          ),
         }}
       />
-    </Tabs>
+      {/* 飲んだ */}
+      <Tab.Screen
+        name="飲んだ"
+        component={DrunkScreen}
+        options={{
+          tabBarLabel: "飲んだ",
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="wine-bottle" size={size} color={color} />
+          ),
+        }}
+      />
+      {/* ススめる */}
+      <Tab.Screen
+        name="ススめる"
+        component={RecommendScreen}
+        options={{
+          tabBarLabel: "すすめる",
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name="like2" size={size} color={color} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
-}
+};
+
+export default BottomTabNavigator;

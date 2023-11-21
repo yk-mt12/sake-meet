@@ -1,4 +1,6 @@
 import { StyleSheet } from "react-native";
+import * as Location from "expo-location";
+import { useState, useEffect } from "react";
 
 import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
@@ -7,7 +9,30 @@ import { CarouselTitle } from "../../components/CarouselTitle";
 import { HeaderIcons } from "../../components/HeaderIcons";
 import { CommentCard } from "../../components/CommentCard";
 
-export default function TabOneScreen() {
+export default function HomeScreen() {
+  const [location, setLocation] = useState<any>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+  }, []);
+
+  let text = "Waiting..";
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+  }
+
   return (
     <View style={styles.container}>
       <View lightColor="#EFEFEF" darkColor="#EFEFEF" />
@@ -26,6 +51,13 @@ export default function TabOneScreen() {
 }
 
 const styles = StyleSheet.create({
+  parameter: {
+    marginTop: 32,
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "black",
+  },
   container: {
     flex: 1,
     marginTop: 20,
