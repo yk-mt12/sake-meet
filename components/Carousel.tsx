@@ -1,7 +1,8 @@
 import React from "react";
-import { ScrollView, View, StyleSheet } from "react-native";
 import { Card } from "./Card";
 import DrinkImage1 from "../assets/images/drink1.png";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 const cardData = [
   {
     imageSource: DrinkImage1,
@@ -28,13 +29,23 @@ const cardData = [
 const Carousel = () => {
   return (
     <View style={styles.carousel}>
+      <AntDesign
+        name="leftcircle"
+        size={24}
+        color="#FB5660"
+        style={styles.arrowIcon}
+      />
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {/* カードデータ配列をマッピングしてカードをレンダリング */}
         {cardData.map((card, index) => (
           <Card key={index} source={card.imageSource} title={card.title} />
         ))}
       </ScrollView>
-      {/* 矢印ナビゲーションの実装は省略 */}
+      <AntDesign
+        name="rightcircle"
+        size={24}
+        color="#FB5660"
+        style={styles.arrowIcon}
+      />
     </View>
   );
 };
@@ -58,7 +69,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     // その他のスタイル定義
   },
-  // 矢印ナビゲーションのスタイル定義も必要に応じてここに追加
+  arrowIcon: {
+    marginHorizontal: 16,
+  },
 });
 
 // cardDataはカードの情報を持つ配列で、
