@@ -12,19 +12,31 @@ import { CommentCard } from "../../components/CommentCard";
 export default function HomeScreen() {
   const [location, setLocation] = useState<any>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [address, setAddress] = useState<any>(null);
 
   useEffect(() => {
     (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
+      const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
         setErrorMsg("Permission to access location was denied");
         return;
       }
 
       let location = await Location.getCurrentPositionAsync({});
+
       setLocation(location);
     })();
   }, []);
+
+  // useEffect(() => {
+  //   (async () => {
+  //     let address = await Location.reverseGeocodeAsync({
+  //       latitude: location?.coords.latitude,
+  //       longitude: location?.coords.longitude,
+  //     });
+  //     setAddress(address);
+  //   })();
+  // }, [location]);
 
   let text = "Waiting..";
   if (errorMsg) {
@@ -35,6 +47,7 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
+      <Text>{address}</Text>
       <View lightColor="#EFEFEF" darkColor="#EFEFEF" />
       <View style={styles.headerIconsContainer}>
         <HeaderIcons />

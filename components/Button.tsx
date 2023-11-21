@@ -20,7 +20,6 @@ const OriginalButton = (props: ButtonProps) => {
 
 const styles = StyleSheet.create({
   customButton: {
-    // maxWidth: 150, // Set your desired minimum width
     backgroundColor: "#FB5660",
     borderRadius: 32,
     flexDirection: "row",
