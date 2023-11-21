@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "./Card";
+import { Card } from "./Cards/Card";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import cardData from "../data/mockData";
@@ -15,7 +15,7 @@ const Carousel = () => {
       />
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {cardData.map((card, index) => (
-          <Card key={index} source={card.imageSource} title={card.title} />
+          <Card key={index} source={card.source} title={card.title} />
         ))}
       </ScrollView>
       <AntDesign

@@ -1,43 +1,46 @@
 import React from "react";
-import { Card } from "./Card";
+import { Card } from "./Cards/Card";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-import cardData from "../data/mockData";
+import { WantDrinkCard } from "./WantDrinkCard";
 
-const GridCard = () => {
+type CardType = {
+  source: any;
+  title: string;
+};
+interface GridCardProps {
+  cardData: CardType[];
+}
+
+const GridCard = (props: GridCardProps) => {
+  const { cardData } = props;
   return (
-    <View style={styles.gridContainer}>
-      {cardData.map((card, index) => (
-        <Card key={index} source={card.imageSource} title={card.title} />
-      ))}
-    </View>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={styles.gridContainer}>
+        {cardData.map((card, index) => (
+          <View style={styles.card}>
+            <WantDrinkCard
+              key={index}
+              source={card.source}
+              title={card.title}
+            />
+          </View>
+        ))}
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-    gridContainer: {
-        
-    }
+  gridContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    marginHorizontal: 20,
+  },
   card: {
-    width: 200, // 適切な幅に設定
-    marginHorizontal: 8, // 必要に応じて調整
-    // その他のスタイル定義
-  },
-  image: {
-    width: "100%",
-    height: 100, // 必要に応じて調整
-    // その他のスタイル定義
-  },
-  title: {
-    textAlign: "center",
-    // その他のスタイル定義
-  },
-  arrowIcon: {
-    marginHorizontal: 16,
+    marginHorizontal: 4,
+    marginVertical: 8,
   },
 });
 
-// cardDataはカードの情報を持つ配列で、
-// { imageSource: require('path_to_image'), title: 'タイトル' } のようなオブジェクトを含みます。
-
-export default Carousel;
+export default GridCard;

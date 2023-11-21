@@ -1,15 +1,62 @@
 import { StyleSheet } from "react-native";
 
-import EditScreenInfo from "../../components/EditScreenInfo";
-import { Text, View } from "../../components/Themed";
-import { Card } from "../../components/Card";
+import { View } from "../../components/Themed";
+import { HorizontalCard } from "../../components/Cards/HorizontalCard";
+import DrinkImage1 from "../../assets/images/drink1.png";
+import { ScrollView } from "react-native-gesture-handler";
 
+const cardData = [
+  {
+    source: DrinkImage1,
+    title: "タイトル",
+  },
+  {
+    source: DrinkImage1,
+    title: "タイトル",
+  },
+  {
+    source: DrinkImage1,
+    title: "タイトル",
+  },
+  {
+    source: DrinkImage1,
+    title: "タイトル",
+  },
+  {
+    source: DrinkImage1,
+    title: "タイトル",
+  },
+  {
+    source: DrinkImage1,
+    title: "タイトル",
+  },
+  {
+    source: DrinkImage1,
+    title: "タイトル",
+  },
+  {
+    source: DrinkImage1,
+    title: "タイトル",
+  },
+  {
+    source: DrinkImage1,
+    title: "タイトル",
+  },
+  {
+    source: DrinkImage1,
+    title: "タイトル",
+  },
+];
 
 export default function DrunkScreen() {
   return (
-    <View style={styles.container}>
-    
-    </View>
+    <ScrollView showsHorizontalScrollIndicator={false}>
+      <View style={styles.container}>
+        {cardData.map((card, index) => (
+          <HorizontalCard source={card.source} title={card.title} />
+        ))}
+      </View>
+    </ScrollView>
   );
 }
 
@@ -18,6 +65,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    marginHorizontal: 12,
+    marginTop: 32,
   },
   title: {
     fontSize: 20,
